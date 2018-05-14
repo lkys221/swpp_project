@@ -1,0 +1,69 @@
+<div *ngIf="!isVerified">
+  <form (ngSubmit)="passwordVerify()">
+    <div class="container text-center">
+      <div id="verification">
+      <h3>Type Your Password</h3>
+      <input type="password" id="passwordVerification" placeholder="Verify Your Password" [(ngModel)]="passwordVerification" [ngModelOptions]="{standalone: true}">
+      <input type="submit" id="verify_button" value="Verify">
+      </div>
+    </div>
+  </form>
+
+</div>
+
+<div *ngIf="isVerified">
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#account">Account Setting</a></li>
+    <li><a data-toggle="tab" href="#gp_register">Group Purchase Register List</a></li>
+    <!--<li *ngIf="profile.type=='1'"><a data-toggle="tab" href="#gp_recruitment">Group Purchase Recruitment List</a></li>-->
+  </ul>
+
+  <div class="tab-content">
+    <div id="account" class="tab-pane fade in active">
+      <div class="row text-center">
+        <label class="col-lg-1">Username</label>
+        <label class="col-lg-2" type="text" id="change_username" placeholder="Username">{{change_profile.username}}</label>
+      </div>
+      <div class="row text-center">
+        <label class="col-lg-1">Email</label>
+        <input class="col-lg-2" type="text" id="change_email" placeholder="Email" [(ngModel)]="change_profile.email" [ngModelOptions]="{standalone: true}">
+        <input type="button" class="col-lg-1" id="check_email_button" (click)="checkEmail()" value="Check">
+      </div>
+      <div class="row text-center">
+        <label class="col-lg-1">Phone Number</label>
+        <input class="col-lg-2" type="text" id="phone_number" placeholder="Phone Number" [(ngModel)]="change_profile.phone_number" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="row text-center">
+        <label class="col-lg-1">Password</label>
+        <input class="col-lg-2" type="password" id="change_password" placeholder="Password" [(ngModel)]="change_password" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="row text-center">
+        <label class="col-lg-1">Confirm Password</label>
+        <input class="col-lg-2" type="password" id="confirm_password" placeholder="Confirm Password" [(ngModel)]="confirm_password" [ngModelOptions]="{standalone: true}">
+      </div>
+      <input type="button" id="change_submit" (click)="updateProfile()" value="Change">
+      <input type="button" id="delelte_account" (click)="deleteProfile()" value="Delete Account">
+    </div>
+
+
+    <div id="gp_register" class="tab-pane fade">
+      <p></p>
+      <h4 *ngIf="register_History.length==0">&nbsp;&nbsp;You do not register any group purchase yet!</h4>
+      <ul class="list-group" *ngFor="let register of register_History">
+          <li class="list-group-item">
+            <div class="row">
+              <h4 class="col-lg-2"> Recruitment ID <span class="label label-default">{{register.gp_recruitment}}</span></h4>
+              <h4 class="col-lg-2"> Solar Panel <span class="label label-default">{{register.solar_panel}}</span></h4>
+              <h4 class="col-lg-2"> Num of Ordering <span class="label label-default">{{register.num_panel}}</span></h4>
+              <h4 class="col-lg-2"> Current Recruitment <span class="label label-default">{{register.num_requested_panel}}/{{register.min_panel}}</span></h4>
+            </div>
+          </li>
+      </ul>
+    </div>
+
+    <div id="gp_recruitment" class="tab-pane fade">
+
+    </div>
+  </div>
+
+</div>

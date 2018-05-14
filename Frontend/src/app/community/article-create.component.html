@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+
+
+<div class="container">
+  <div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-12">
+      <h1 class="mt-4">Title: <input id="articleTitle" [(ngModel)]="articleTitle" [ngModelOptions]="{standalone: true}"/></h1>
+
+
+      <hr>
+
+      <!-- content Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Content:</h5>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <textarea id="articleContent" class="form-control" rows="15" [(ngModel)]="articleContent" [ngModelOptions]="{standalone: true}"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="sel1" class="col-sm-2 control-label">Type of article</label>
+              <div class="cols-sm-10">
+                <select class="form-control" id="sel1" name="type" [(ngModel)]="type">
+                  <option *ngFor="let type of types" [value]="type.value">
+                    {{type.display}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="button_add" (click)="addArticle(articleTitle, articleContent)">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+

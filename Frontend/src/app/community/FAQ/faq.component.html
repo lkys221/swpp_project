@@ -1,0 +1,47 @@
+<h1 align="center">FAQ Page</h1>
+
+
+<div align="center" >
+  <button id="button_create" class="btn btn-primary" (click)="gotoCreate()">Create article</button>
+</div>
+
+<div align="center" >
+  <label>Search Box: </label><input type="text" [(ngModel)]="searchArticle.title" >
+</div>
+
+
+<div class="container">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+
+      <div class="archive-content">
+        <div class="stories-item-wrapper" *ngFor="let article of faq_list | filterBy : searchArticle" (click)="onSelect(article)">
+          <div *ngIf="article.type == '2'">
+
+            <div class="stories-item">
+              <img width="433" height="433" src="https://20843-presscdn-pagely.netdna-ssl.com/wp-content/uploads/2017/10/0O6A0665-copy-433x433.jpg"
+                   class="stories-item__image wp-post-image" alt=""
+                   sizes="(max-width: 433px) 433vw, 433px"
+              />
+
+              <div class="stories-item__info">
+                <h3 class="stories-item__title" id="div3">
+                  <a class="stories-item__link">{{article.title}}</a>
+                </h3>
+                <div class="stories-item__excerpt">
+                  <p id="div2">{{article.content}}</p>
+                </div>
+                <div class="stories-item__read-more">
+                  <p>read more</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </main>
+  </div>
+</div>

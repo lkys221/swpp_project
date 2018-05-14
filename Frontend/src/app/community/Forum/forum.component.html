@@ -1,0 +1,108 @@
+<h1 align="center">Forum Page</h1>
+
+<div align="center" >
+  <button id="button_create" class="btn btn-primary" (click)="gotoCreate()">Create article</button>
+</div>
+
+<div align="center" >
+  <label>Search Box: </label><input type="text" [(ngModel)]="searchArticle.title" >
+</div>
+
+
+<div class="container">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+
+      <div class="archive-content">
+        <div class="stories-item-wrapper" *ngFor="let article of forumList | filterBy : searchArticle" (click)="onSelect(article)">
+          <div *ngIf="article.type == '1'">
+
+            <div class="stories-item">
+              <img width="433" height="433" src="https://20843-presscdn-pagely.netdna-ssl.com/wp-content/uploads/2017/10/0O6A0665-copy-433x433.jpg"
+                   class="stories-item__image wp-post-image" alt=""
+                   sizes="(max-width: 433px) 433vw, 433px"
+              />
+
+              <div class="stories-item__info">
+                <h3 class="stories-item__title" id="div3">
+                  <a class="stories-item__link">{{article.title}}</a>
+                </h3>
+                <div class="stories-item__excerpt">
+                  <p id="div2">{{article.content}}</p>
+                </div>
+                <div class="stories-item__read-more">
+                  <p>read more</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+      </div>
+    </main>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div class="vertical-menu">
+  <a href="#" class="active">Home</a>
+  <a href="/community">Notice</a>
+  <a href="/community/forum">Forum</a>
+  <a href="/community/faq">FAQ</a>
+</div>
+
+<div align="center" >
+  <button id="button_create" (click)="gotoCreate()">Create article</button>
+
+  <input type="text" [(ngModel)]="searchArticle.title" >
+
+    <ul *ngFor="let article of forum_list | filterBy : searchArticle" (click)="onSelect(article)">
+      <li *ngIf="article.type == '1'">
+        <b style="font-size:20px">{{article.title}}</b>
+      </li>
+
+  </ul>
+</div>
+
+
+<style>
+  .vertical-menu {
+    width: 200px;
+    float:left;
+  }
+
+  .vertical-menu a {
+    background-color: #eee;
+    color: black;
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+  }
+
+  .vertical-menu a:hover {
+    background-color: #ccc;
+  }
+
+  .vertical-menu a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+</style>
+
+//-->

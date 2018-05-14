@@ -1,0 +1,22 @@
+<div>
+  <image-upload
+    [max]="1"
+    (uploadFinished)="onFileUpload($event)"
+  ></image-upload>
+  <p>
+    Name: <input [(ngModel)]="createPanel.name" placeholder="name">
+  </p>
+  <p>
+    Company: <input [(ngModel)]="createPanel.company" placeholder="company">
+  </p>
+  <p>
+    Price: <input [(ngModel)]="createPanel.price" placeholder="price"> &#8361;
+  </p>
+  <p>
+    Max Power: <input [(ngModel)]="createPanel.power" placeholder="power"> W
+  </p>
+  <p>
+    Size: <input [(ngModel)]="createPanel.width" placeholder="width"> m X <input [(ngModel)]="createPanel.length" placeholder="length"> m
+  </p>
+  <button (click)="create(createPanel)" id="create_button">Register</button><button (click)="goBack()">Go Back</button>
+</div>

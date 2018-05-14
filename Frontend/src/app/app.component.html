@@ -1,0 +1,89 @@
+<div *ngIf="isLogin">
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+
+      <div class="navbar-header">
+        <a class="navbar-brand">SNULAR</a>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li><a class="nav-link" (click)="gotoHomePage()">Home</a></li>
+        <li><a (click)="gotoSimulationPage()">Simulation</a></li>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" (click)="gotoCommunityPage()">Community</a>
+          <div class="dropdown-content">
+            <a (click)="gotoCommunityPage()">Notice</a>
+            <a (click)="gotoForumPage()">Forum</a>
+            <a (click)="gotoFAQPage()">FAQ</a>
+          </div>
+        </li>
+        <li><a (click)="gotoPanelPage()">Panel</a></li>
+        <li><a (click)="gotoGroupPurchasePage()">Group Purchase</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav" style="float: right">
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown">{{profile.username}}<span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a (click)="gotoMyPage()">My account</a></li>
+            <li><a id="signOut" (click)="signOut()">Log out</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+  </nav>
+  <div class ="compensation"></div>
+
+  <router-outlet></router-outlet>
+
+</div>
+<div *ngIf="!isLogin">
+  <div class="container">
+    <div id="wrapper">
+      <h1>SNULAR</h1>
+
+      <div class="tab-content">
+        <div id="login" class="tab-pane fade in active" *ngIf="isLoginTab">
+          <form (ngSubmit)="signIn()">
+            <div id="inputs">
+              <div>
+                <input type="text" id="login_username" placeholder="Username" [(ngModel)]="loginUsername" [ngModelOptions]="{standalone: true}">
+                <input type="password" id="login_password" placeholder="Password" [(ngModel)]="loginPassword" [ngModelOptions]="{standalone: true}">
+                <input type="submit" id="login_submit" value="Login">
+              </div>
+            </div>
+          </form>
+        </div>
+
+
+        <div id="register" class="tab-pane fade" *ngIf="!isLoginTab">
+          <form (ngSubmit)="signUp()">
+            <div >
+              <div>
+                <input type="email" id="email" placeholder="Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
+                <input type="text" id="username" placeholder="Username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}">
+                <input type="password" id="password" placeholder="Password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+                <input type="password" id="confirm_password" placeholder="Confirm Password" [(ngModel)]="confirmPassword" [ngModelOptions]="{standalone: true}">
+                <input type="text" id="phone_number" placeholder="Phone Number" [(ngModel)]="phoneNumber" [ngModelOptions]="{standalone: true}"/>
+                <select required [(ngModel)]="type" [ngModelOptions]="{standalone: true}">
+                  <option value="" hidden>Select Your Purpose</option>
+                  <option *ngFor="let type of types" [value]="type.value" >
+                    {{type.display}}
+                  </option>
+                </select>
+                <input type="submit" id="register_submit" value="Register">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <div id="labels" class="nav nav-tabs">
+        <label *ngIf="!isLoginTab">Already registered? <span id="login_tab" data-toggle="tab" href="#login" (click)="gotoLoginTab()"> Login</span></label>
+        <label *ngIf="isLoginTab">Not registered? <span id="register_tab" data-toggle="tab" href="#register" (click)="gotoRegisterTab()"> Create Account</span></label>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<h1 align="center">Group Purchase Recruitment Page</h1>
+
+
+<div align="center" >
+  <button id="button_create" class="btn btn-primary" (click)="gotoCreate()">Create recruitment</button>
+</div>
+
+
+
+<div class="container">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+
+      <div class="archive-content">
+        <div class="stories-item-wrapper" *ngFor="let recruit of recruitmentList" (click)="onSelect(recruit)">
+
+            <div class="stories-item">
+              <img width="433" height="433" src="https://20843-presscdn-pagely.netdna-ssl.com/wp-content/uploads/2017/10/0O6A0665-copy-433x433.jpg"
+                   class="stories-item__image wp-post-image" alt=""
+                   sizes="(max-width: 433px) 433vw, 433px"
+              />
+
+              <div class="stories-item__info" *ngIf="getPanelInfo(recruit.solar_panel)">
+                <h3 class="stories-item__title">
+                  <a class="stories-item__link">{{getPanelInfo(recruit.solar_panel).name}}</a>
+                </h3>
+                <div class="stories-item__excerpt">
+                  <p>{{getPanelInfo(recruit.solar_panel).price}} &#8361; &rarr; {{recruit.discounted_price}} &#8361;</p>
+                  <div> {{recruit.num_requested_panel}} / {{recruit.min_panel}}</div>
+                </div>
+              </div>
+
+            </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div align="center" >
+  <button id="button_create" (click)="gotoCreate()">Create article</button>
+</div>
+
+<div align="center" >
+  <ul>
+    <ul *ngFor="let recruit of recruitmentList" (click)="onSelect(recruit)">
+        <b style="font-size:20px">{{recruit.id}}</b>
+    </ul>
+  </ul>
+</div>
+//-->
+
+
+
+

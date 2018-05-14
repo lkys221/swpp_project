@@ -1,0 +1,32 @@
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <h1 class="mt-4" align="center">Edit page</h1>
+
+      <div class="card my-4">
+          <h5 class="card-header">Edit:</h5>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+
+                <label>Mininum number of panels:  </label>
+                <input [(ngModel)] = "recruitment.min_panel" placeholder="minimum" [ngModelOptions]="{standalone: true}"/>
+
+                <div>
+                  <label>Discounted price: </label>
+                  <input [(ngModel)] = "recruitment.discounted_price" placeholder="discounted price" [ngModelOptions]="{standalone: true}"/>
+
+                </div>
+
+                <button class="btn btn-primary" (click) ="save()">Save</button>
+
+              </div>
+            </form>
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>

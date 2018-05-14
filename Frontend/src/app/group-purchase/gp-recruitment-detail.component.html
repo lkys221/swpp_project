@@ -1,0 +1,28 @@
+<h2>Recruiting {{recruitment.id}} </h2>
+
+
+
+
+<div>
+  <img src=""/>
+  <label style="font-weight: bold">Solar Panel:</label> <span> {{recruitment.solar_panel}} </span>
+  <br/>
+  <label>Mininum number of panels: </label> <span> {{recruitment.min_panel}}</span>
+  <br/>
+  <label>Discounted price: </label> <span> {{recruitment.discounted_price}}</span>
+
+  <br/>
+  <button id="button_edit" (click)="gotoEdit()">Edit</button>
+  <button id="button_delete" (click)="deleteRecruitment(recruitment); $event.stopPropagation()">Delete</button>
+
+  <br/>
+  <b>{{recruitment.num_requested_panel}} / {{recruitment.min_panel}}</b>
+</div>
+
+
+<div>
+  <h3>Register for Group Purchase</h3>
+  <label>Number of panels: </label> <input id='number'type="number" [(ngModel)]=numPanel value="0" min="0">
+  <button id="button_add" (click)="addRegister(numPanel); ">Register</button>
+
+</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<div class="container">
+  <div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-12">
+      <h1 class="mt-4">Title: <input id="articleTitle" [(ngModel)] = "article.title" placeholder="title" [ngModelOptions]="{standalone: true}"/></h1>
+
+      <hr>
+
+      <!-- content Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Content:</h5>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <textarea id="articleContent" class="form-control" rows="15" [(ngModel)] = "article.content" placeholder="content" [ngModelOptions]="{standalone: true}"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="button_add" (click)="save()">Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+

@@ -1,0 +1,47 @@
+<h1 align="center">Recruitment Create Page</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="mt-4">
+
+        <div class="card my-4">
+          <h5 class="card-header">Information:</h5>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+
+                <label>Type of Panels</label>
+                  <select class="form-control" id="sel1" name="type" [(ngModel)]="type">
+                    <option *ngFor="let type of types" [value]="type.value">
+                      {{type.display}}
+                    </option>
+                  </select>
+                </div>
+
+                <div>
+                  <label>Mininum number of panels: </label> <input [(ngModel)]="minNum" [ngModelOptions]="{standalone: true}" placeholder="minumum panels"/>
+                </div>
+
+                <div>
+                  <label>Discounted price: </label> <input [(ngModel)]="discountedPrice" [ngModelOptions]="{standalone: true}" placeholder="discounted price">
+                </div>
+
+                <div>
+                  <button class="btn btn-primary" id="button_add" (click)="addRecruitment(minNum, discountedPrice); ">
+                    Create</button>
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

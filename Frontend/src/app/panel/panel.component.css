@@ -1,0 +1,54 @@
+#top_tool {
+  text-align: center;
+}
+
+.panels_information {
+  list-style-type: none;
+  padding: 2%;
+  width: auto;
+  margin: 10px;
+}
+
+.panel_information {
+  cursor: pointer;
+  position: relative;
+  width: auto;
+  min-width: 150px;
+  height: auto;
+  background-color: #EEEEEE;
+  border-left: 4px solid #00BFFF;
+  margin: 10px;
+  float: left;
+  text-align: center;
+}
+
+.panel_information:hover {
+  background-color: #DDDDDD;
+  left: 4px;
+}
+
+.panel_image {
+  height: 200px;
+  width: auto;
+}
+
+#not_manu_notice {
+  visibility: visible;
+  width: 300px;
+  background-color: #555555;
+  color: #FFFFFF;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+#button_create:hover #not_manu_notice {
+  visibility: visible;
+  opacity: 1;
+}

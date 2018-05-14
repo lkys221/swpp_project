@@ -1,0 +1,19 @@
+#detail_div {
+  width: 100%;
+  text-align: center;
+}
+
+.panel_information {
+  align-self: center;
+  text-align: center;
+  width: 50%;
+  height: auto;
+  background-color: #EEEEEE;
+  border-left: 4px solid #00BFFF;
+  margin: 10px;
+}
+
+.panel_image {
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,18 @@
+<div id="detail_div">
+  <div id="top_tool">
+    <button (click)="gotoEdit()" id="edit_button">Edit Info</button>
+    <button (click)="deleteAndGoBack()" id="delete_button">Delete Panel</button>
+    <button (click)="goBack()" id="go_back_button">Go Back</button>
+  </div>
+  <div
+    class="panel_information"
+  >
+    <img src="{{'http://' + backendIp + panel.image}}" class="panel_image">
+    <p>Name: {{panel.name}}</p>
+    <p>Company: {{panel.company}}</p>
+    <p>Price: {{panel.price}} &#8361;</p>
+    <p>Power: {{panel.power}} W</p>
+    <p>Size: {{panel.width}} m X {{panel.length}} m</p>
+    <p>Efficiency: {{getEfficiency(panel.efficiency)}} %</p>
+  </div>
+</div>

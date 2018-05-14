@@ -1,0 +1,176 @@
+
+
+
+<!DOCTYPE html>
+
+<div class="container">
+  <div class="row">
+
+    <!-- Post Content Column -->
+    <div class="col-lg-8">
+      <div class="mt-4">
+        <h1 class="title">{{article.title}}</h1>
+    </div>
+
+      <!-- Author -->
+      <p *ngIf="article.author" class="lead">
+        by
+        {{getProfileInfo(article.author).username}}
+      </p>
+
+      <hr>
+
+      <p>{{article.create_time}}</p>
+
+      <hr>
+
+      <p class="content">{{article.content}}</p>
+
+      <hr>
+      <button id="button_edit" type="button" class="btn btn-warning" (click)="gotoEdit()">Edit</button>
+      <button type="button" class="btn btn-danger" id="button_delete" (click)="deleteArticle(article);
+      $event.stopPropagation()">Delete</button>
+
+      <hr>
+
+      <!-- Comments Form -->
+      <div class="card my-4">
+        <h5 class="card-header">Leave a Comment:</h5>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" rows="3" [(ngModel)]="commentContent" [ngModelOptions]="{standalone: true}"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" (click)="addComment(commentContent)">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+
+      <!-- Categories Widget -->
+      <div class="card my-4">
+        <h5 class="card-header">Categories</h5>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-6">
+              <ul class="list-unstyled mb-0">
+                <li>
+                  <a href="/community">Notice</a>
+                </li>
+                <li>
+                  <a href="/community/forum">Forum</a>
+                </li>
+                <li>
+                  <a href="/community/faq">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+
+    <div class="comments-container">
+      <h1>Comments</h1>
+
+      <ul id="comments-list" class="comments-list" *ngFor="let comment of comment_list">
+        <li>
+          <div class="comment-main-level">
+
+            <div class="comment-avatar"><img src="https://ih1.redbubble.net/image.211386095.8807/flat,800x800,075,t.u2.jpg" alt=""></div>
+            <div class="comment-box">
+              <div class="comment-head">
+                <h6 class="comment-name by-author" *ngIf="comment.author">{{getProfileInfo(comment.author).username}}</h6>
+                <span>{{comment.create_time}}</span>
+
+                <span class="editBtn" *ngIf="loggedInUser.id == comment.author && commentBeingEdited == false">
+                    <button class="btn btn-warning" (click)="editComment(comment)">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteComment(comment)">Delete</button>
+                </span>
+
+                <span *ngIf="loggedInUser.id == comment.author && commentBeingEdited == true && commentBeingEditedId != comment.id">
+                      <button class="btn btn-warning" (click)="editComment(comment)">Edit</button>
+                      <button class="btn btn-danger" (click)="deleteComment(comment)">Delete</button>
+                </span>
+
+                <span *ngIf="loggedInUser.id == comment.author && commentBeingEdited == true && commentBeingEditedId == comment.id">
+                      <button class="btn btn-warning" (click)="saveComment(comment)">Save</button>
+                      <button class="btn btn-danger" (click)="deleteComment(comment)">Delete</button>
+                </span>
+
+                <i class="fa fa-reply"></i>
+                <i class="fa fa-heart"></i>
+              </div>
+
+              <div class="comment-content">
+                <span *ngIf="loggedInUser.id == comment.author && commentBeingEdited == true && commentBeingEditedId == comment.id; else elseBlock">
+                  <textarea class="form-control" rows="3"  [(ngModel)] = "comment.content" placeholder="comment"></textarea></span>
+                  <ng-template #elseBlock>{{comment.content}}</ng-template>
+
+
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+
+<div class="media mb-4">
+  <div class="media-body">
+    <div>
+      <ul *ngFor="let comment of comment_list" >
+
+
+      <span *ngIf="loggedInUser.id == comment.author && commentBeingEdited == false">
+          <span style="font-weight: bold">{{comment.author}}: </span>
+          <span>{{comment.content}}</span>
+          <button class="comment_edit" (click)="editComment(comment)">Edit</button>
+          <button class="delete" (click)="deleteComment(comment)">X</button>
+      </span>
+
+        <span *ngIf="loggedInUser.id == comment.author && commentBeingEdited == true && commentBeingEditedId != comment.id">
+          <span style="font-weight: bold">{{comment.author}}: </span>
+          <span>{{comment.content}}</span>
+            <button (click)="editComment(comment)">Edit</button>
+            <button class="delete" (click)="deleteComment(comment)">X</button>
+      </span>
+
+        <span *ngIf="loggedInUser.id == comment.author && commentBeingEdited == true && commentBeingEditedId == comment.id">
+          <span style="font-weight: bold">{{comment.author}}: </span>
+          <input [(ngModel)] = "comment.content" placeholder="comment"/>
+            <button (click)="saveComment(comment)">Save</button>
+            <button class="delete" (click)="deleteComment(comment)">X</button>
+      </span>
+
+        <span *ngIf="loggedInUser.id != comment.author">
+          <span style="font-weight: bold">{{comment.author}}: </span>
+          <span>{{comment.content}}</span>
+      </span>
+
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+//-->
+
+
+
+

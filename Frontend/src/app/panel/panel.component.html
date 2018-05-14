@@ -1,0 +1,23 @@
+<div>
+  <div id="top_tool">
+    <button (click)="gotoCreate()" id="create_button">
+      New Product
+      <span id="not_manu_notice">asdf</span>
+    </button>
+  </div>
+  <div class="panels_information">
+    <div
+      *ngFor="let panel of panels"
+      (click)="onSelectAndGotoDetail(panel)"
+      class="panel_information"
+    >
+      <img src="{{'http://' + backendIp + panel.image}}" class="panel_image">
+      <p>Name: {{panel.name}}</p>
+      <p>Company: {{panel.company}}</p>
+      <p>Price: {{panel.price}} &#8361;</p>
+      <p>Power: {{panel.power}} W</p>
+      <p>Size: {{panel.width}} m X {{panel.length}} m</p>
+      <p>Efficiency: {{getEfficiency(panel.efficiency)}} %</p>
+    </div>
+  </div>
+</div>
